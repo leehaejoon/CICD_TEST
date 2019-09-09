@@ -1,3 +1,9 @@
+def GET_PACKAGES()  {
+    sh '''
+        pip install -r requirements.txt;
+    '''
+}
+
 def RUN_UNITTEST()  {
     sh '''
         python run_test.py;
