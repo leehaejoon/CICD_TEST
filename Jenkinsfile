@@ -1,12 +1,22 @@
-def GET_PACKAGES()  {
+def CHECK_DOCKER_INSTANCES(){
     sh '''
-        pip install -r requirements.txt;
+        if test ! -z "$(docker ps -af name=ec-iti | grep -w ec-iti)"; then
+            docker stop ec-iti && docker rm ec-iti
+        fi
     '''
 }
 
-def RUN_UNITTEST()  {
+
+def DOCKER_EC_INIT(){
+    sh'''
+        docker build -t iti-image ./
+        docker run -itd --name ec-iti iti-image:latest;
+    '''
+}
+
+def RUN_UNITTEST_IN_DOCKER()  {
     sh '''
-        python run_test.py;
+        docker exec -t ec-iti run_test.py;
     '''
 }
 
@@ -24,15 +34,16 @@ pipeline  {
             }
         }
 
-        stage ('READY_TO_TEST')  {
+        stage ('DOCKER_INIT')  {
             steps  {
-                GET_PACKAGES()
+                CHECK_DOCKER_INSTANCES()
+                DOCKER_EC_INIT()
             }
         }
 
         stage ('UNITTEST')  {
             steps  {
-                RUN_UNITTEST()
+                RUN_UNITTEST_IN_DOCKER()
             }
         }
     }
