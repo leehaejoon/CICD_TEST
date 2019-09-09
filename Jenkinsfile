@@ -16,7 +16,7 @@ def DOCKER_EC_INIT(){
 
 def RUN_UNITTEST_IN_DOCKER()  {
     sh '''
-        docker exec -t ec-iti run_test.py;
+        docker exec -t ec-iti python run_test.py;
     '''
 }
 
