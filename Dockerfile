@@ -22,7 +22,8 @@ RUN git clone https://github.com/yyuu/pyenv-virtualenv.git $HOME/.pyenv/plugins/
 
 RUN pyenv install 3.7.0
 RUN pyenv global 3.7.0
-RUN pip install -r requirements.txt
 
-COPY . $HOME/
+COPY requirements.txt $HOME/
 WORKDIR $HOME/
+RUN pip install -r requirements.txt
+COPY . $HOME/
