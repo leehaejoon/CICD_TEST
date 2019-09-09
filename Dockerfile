@@ -5,7 +5,8 @@ USER root
 ENV HOME /root
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PYENV_ROOT $HOME/.pyenv
-ENV PATH $PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
+ENV PYTHONPATH $HOME/ITI/src/
+ENV PATH $PYTHONPATH:$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 ENV TZ Asia/Seoul
 
