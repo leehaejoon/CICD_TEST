@@ -24,6 +24,12 @@ pipeline  {
             }
         }
 
+        stage ('READY_TO_TEST')  {
+            steps  {
+                GET_PACKAGES()
+            }
+        }
+
         stage ('UNITTEST')  {
             steps  {
                 RUN_UNITTEST()
