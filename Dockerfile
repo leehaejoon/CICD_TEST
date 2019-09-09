@@ -28,3 +28,4 @@ COPY requirements.txt $HOME/
 WORKDIR $HOME/
 RUN pip install -r requirements.txt
 COPY . $HOME/
+RUN pip install -r ITI/requirements.txt
