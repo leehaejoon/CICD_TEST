@@ -4,7 +4,7 @@ import yaml
 PYTHON = 'python'
 base_path = 'ITI/'
 config_path = base_path + '.cicd.yaml'
-source_path = base_path + 'src/*'
+source_path = base_path + 'src/'
 test_path = base_path + 'tests/*'
 
 def run_test(language):
