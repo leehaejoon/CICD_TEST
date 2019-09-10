@@ -27,5 +27,9 @@ RUN pyenv global 3.7.0
 COPY requirements.txt $HOME/
 WORKDIR $HOME/
 RUN pip install -r requirements.txt
+
+COPY ITI/requirements.txt $HOME/
+WORKDIR $HOME/
+RUN pip install -r requirements.txt
+
 COPY . $HOME/
-RUN pip install -r ITI/requirements.txt
